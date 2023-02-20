@@ -29,7 +29,7 @@ logger = logging.getLogger(__name__)
 
 
 def data_out(*fn, force_dir=True):
-    dirpath = os.path.join(os.path.dirname(__file__), '..', 'data_out')
+    dirpath = os.path.join(os.path.dirname(__file__), 'data_out')
     # Always make data_out directory if non-existent
     if not os.path.isdir(dirpath):
         os.mkdir(dirpath)
@@ -42,7 +42,7 @@ def data_out(*fn, force_dir=True):
 
 
 def data_in(*fn):
-    return os.path.join(os.path.dirname(__file__), '..', 'data_in', *fn)
+    return os.path.join(os.path.dirname(__file__), 'data_in', *fn)
 
 
 def get_config(filename=None, use_ruamel=True, **kwargs):
