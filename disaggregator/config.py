@@ -239,7 +239,9 @@ def dict_wz(keys='WZ', values='Minititel', raw=False):
         https://www.klassifikationsserver.de/klassService/jsp/variant/variantInfo.jsf
     """
     df = pd.read_excel(data_in('dimensionless', 'WZ_2008.xlsx'),
-                       sheet_name='Nur_WZ', index_col=None)
+                       sheet_name='Nur_WZ',
+                       index_col=None,
+                       engine='openpyxl')
     assert keys in df.columns, "`keys` must be a valid column header!"
     assert values in df.columns, "`values` must be a valid column header!"
 
