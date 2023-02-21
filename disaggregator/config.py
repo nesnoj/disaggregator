@@ -51,7 +51,7 @@ def get_config(filename=None, use_ruamel=True, **kwargs):
     """
     if use_ruamel:
         # This one supports YAML Spec 1.2 w/o the problems mentioned below.
-        import ruamel_yaml
+        from ruamel import yaml as ruamel_yaml
     else:
         # Warning: As of 11/2020 PyYAML only supports YAML Spec 1.1, which can
         # cause problems as many expressions (e.g. N) are interpreted as bool.
