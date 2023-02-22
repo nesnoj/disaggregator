@@ -1078,7 +1078,7 @@ def disagg_temporal_gas_CTS(detailed=False, use_nuts3code=False, **kwargs):
             for slp in list(dict.fromkeys(slp_wz_g().values())):
                 f = ('Lastprofil_{}.xls'.format(slp))
                 slp_profil = pd.read_excel(data_in('temporal',
-                                                   'Gas Load Profiles', f))
+                                                   'gas_load_profiles', f))
                 slp_profil = pd.DataFrame(slp_profil.set_index(['Tagestyp',
                                             'Temperatur\nin °C\nkleiner']))
                 slp_profil.columns = pd.to_datetime(slp_profil.columns,
@@ -1210,7 +1210,7 @@ def disagg_temporal_gas_households(use_nuts3code=False, how='top-down',
             for slp in [slp_household_gas()[x] for x in tw_df_lk.columns.values]:
                 f = ('Lastprofil_{}.xls'.format(slp))
                 slp_profil = pd.read_excel(data_in('temporal',
-                                                   'Gas Load Profiles', f))
+                                                   'gas_load_profiles', f))
                 slp_profil = pd.DataFrame(slp_profil.set_index(['Tagestyp',
                                             'Temperatur\nin °C\nkleiner']))
                 slp_profil.columns = pd.to_datetime(slp_profil.columns,

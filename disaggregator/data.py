@@ -1998,7 +1998,7 @@ def CTS_power_slp_generator(state, **kwargs):
     for profile in ['H0', 'L0', 'L1', 'L2', 'G0', 'G1', 'G2', 'G3', 'G4',
                     'G5', 'G6']:
         f = '39_VDEW_Strom_Repräsentative Profile_{}.xlsx'.format(profile)
-        df_load = pd.read_excel(data_in('temporal', 'Power Load Profiles', f),
+        df_load = pd.read_excel(data_in('temporal', 'power_load_profiles', f),
                                 engine='openpyxl').iloc[:, 0:10]
         df_load.columns = ['Hour', 'SA_WIZ', 'SU_WIZ', 'WD_WIZ', 'SA_SOZ',
                            'SU_SOZ', 'WD_SOZ', 'SA_UEZ', 'SU_UEZ', 'WD_UEZ']
