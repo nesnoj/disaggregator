@@ -952,9 +952,7 @@ def households_per_size(scale_by_pop=False, **kwargs):
         fn = data_in('regional', cfg['household_sizes']['filename'])
         df = read_local(fn)
     elif source == 'database':
-        if table_id == 14:
-            year = 2011
-        df = database_get('spatial', table_id=table_id, year=year,
+        df = database_get('spatial', table_id=table_id, year=2011,
                           force_update=force_update)
     elif source == 'values':
         logger.info("Using VALUES")
