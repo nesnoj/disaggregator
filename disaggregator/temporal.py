@@ -756,16 +756,24 @@ def disagg_temporal_power_housholds_slp(use_nuts3code=False,
     """
     cfg = kwargs.get('cfg', get_config())
     year = kwargs.get('year', cfg['base_year'])
-    # Obtain yearly power consumption per per district
+    scale_by_pop = kwargs.get('scale_by_pop', False)
+    # Obtain yearly power consumption per district
     sv_yearly = ((disagg_households_power(by=by,
                                           weight_by_income=weight_by_income,
-                                          year=year)
+                                          year=year,
+                                          scale_by_pop=scale_by_pop)
                   * 1e3)
                  .rename(index=dict_region_code(keys='natcode_nuts3',
-                                                values='ags_lk'))
-                 .to_frame()
-                 .assign(BL=lambda x: [bl_dict().get(int(i[: -3]))
-                                       for i in x.index.astype(str)]))
+                                                values='ags_lk')))
+
+    # Sum up consumption for all household sizes
+    if by == "households":
+        sv_yearly = sv_yearly.sum(axis=1)
+        sv_yearly.name = "value"
+    sv_yearly = sv_yearly.to_frame().assign(
+        BL=lambda x: [bl_dict().get(int(i[: -3]))
+                      for i in x.index.astype(str)]
+    )
 
     total_sum = sv_yearly.value.sum()
 
