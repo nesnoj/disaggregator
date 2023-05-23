@@ -8,7 +8,7 @@ setup(
     packages= ['disaggregator'],
     include_package_data=True,
     install_requires=['numpy',
-                      'pandas',
+                      'pandas<=1.5.3',
                       'tables',
                       'pyyaml',
                       'requests',
