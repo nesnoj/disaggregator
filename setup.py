@@ -18,7 +18,7 @@ setup(
                       'xlrd',
                       'matplotlib',
                       'holidays',
-                      'openpyxl',
+                      'openpyxl==3.1.0',
                       'ruamel.yaml'],
     package_data={
         "": ["*.csv", "*.xlsx"]}
