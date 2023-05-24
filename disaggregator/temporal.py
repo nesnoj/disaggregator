@@ -1112,6 +1112,7 @@ def disagg_temporal_gas_CTS(detailed=False, use_nuts3code=False, **kwargs):
         df = df[gv_lk.index.astype(str)]
 
     if use_nuts3code:
+        df.columns = df.columns.astype(int)
         df = df.rename(columns=dict_region_code(level='lk', keys='ags_lk',
                                                 values='natcode_nuts3'),
                        level=(0 if detailed else None))
