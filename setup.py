@@ -19,7 +19,7 @@ setup(
                       'matplotlib',
                       'holidays',
                       'openpyxl==3.1.0',
-                      'ruamel.yaml'],
+                      'ruamel.yaml<0.18.0'],
     package_data={
         "": ["*.csv", "*.xlsx"]}
 )
